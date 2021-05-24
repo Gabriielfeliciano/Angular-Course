@@ -1,9 +1,7 @@
 <div class="card">
 <div class="card-header"><strong>{{ element.name }}</strong></div>
 <div class="card-body">
-  <p>
-    <strong *ngIf="element.type === 'server'" style="color: red">{{ element.content }}</strong>
-    <em *ngIf="element.type === 'blueprint'" class="text-primary">{{ element.content }}</em>
-  </p>
+  <!-- serve para permitir conteúdo entre as tags do component (app-server-element) -->
+  <ng-content></ng-content>
 </div>
 </div>
