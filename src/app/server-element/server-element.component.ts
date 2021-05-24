@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, SimpleChange, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-server-element',
@@ -8,10 +8,53 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ServerElementComponent implements OnInit {
   @Input('srvElement')
   element!: { type: string; name: string; content: string; };
+  @Input()
+  name!: string;
+  @ViewChild("heading",{static:true}) header!: ElementRef;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor() {
+    console.log('constructor called!');
+   }
+  
+  // ver ações que alteraram
+  ngOnChanges(changes: SimpleChange){
+    console.log('ngOnChanges called!');
+    console.log(changes);
   }
 
+  // iniciando o componente
+  ngOnInit(): void {
+    console.log('ngOnInit called!');
+    console.log('Text:' + this.header.nativeElement.textContent);
+    
+  }
+
+  //verificando ações que foram feitas
+  ngDoCheck(){
+    console.log('ngDoChecked called!');
+  }
+
+  ngAfterContentInit(){
+    console.log('ngAfterContentInit called!')
+  }
+
+  ngAfterContentChecked(){
+    console.log('ngAfterContentChecked called!')
+  }
+
+  // ver ações para iniciar depois da formação do view
+  ngAfterViewInit(){
+    console.log('ngAfterViewInit called!')
+    console.log('Text:' + this.header.nativeElement.textContent);
+  }
+
+  // ver ações para que mudaram depois da formação do view
+  ngAfterViewChecked(){
+    console.log('ngAfterViewChecked called!')
+  }
+
+  //destruir um elemento
+  ngOnDestroy(){
+    console.log('ngOnDestroy called!')
+  }
 }
