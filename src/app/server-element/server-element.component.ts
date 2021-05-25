@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, SimpleChange, ViewChild } from '@angular/core';
+import { Component, ContentChild, ElementRef, Input, OnInit, SimpleChange, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-server-element',
@@ -11,6 +11,7 @@ export class ServerElementComponent implements OnInit {
   @Input()
   name!: string;
   @ViewChild("heading",{static:true}) header!: ElementRef;
+  @ContentChild("contentParagraph", {static: true}) paragraph!: ElementRef;
 
   constructor() {
     console.log('constructor called!');
@@ -26,6 +27,8 @@ export class ServerElementComponent implements OnInit {
   ngOnInit(): void {
     console.log('ngOnInit called!');
     console.log('Text:' + this.header.nativeElement.textContent);
+    console.log('Text Content of paragraph ' + this.paragraph.nativeElement.tectContent);
+    
     
   }
 
@@ -36,6 +39,8 @@ export class ServerElementComponent implements OnInit {
 
   ngAfterContentInit(){
     console.log('ngAfterContentInit called!')
+    console.log('Text Content of paragraph ' + this.paragraph.nativeElement.tectContent);
+
   }
 
   ngAfterContentChecked(){
