@@ -1,0 +1,8 @@
+<div class="card">
+<!-- <div class="card-header"><strong>{{ element.name }}</strong></div> -->
+<div class="card-header" #heading><strong>{{ name }}</strong></div>
+<div class="card-body">
+  <!-- serve para permitir conteúdo entre as tags do component (app-server-element) -->
+  <ng-content></ng-content>
+</div>
+</div>
